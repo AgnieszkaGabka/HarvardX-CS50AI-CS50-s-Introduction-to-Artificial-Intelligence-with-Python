@@ -1,5 +1,6 @@
 import sys
 
+
 class Node():
     def __init__(self, state, parent, action):
         self.state = state
@@ -38,6 +39,7 @@ class QueueFrontier(StackFrontier):
             node = self.frontier[0]
             self.frontier = self.frontier[1:]
             return node
+
 
 class Maze():
 
@@ -80,7 +82,6 @@ class Maze():
 
         self.solution = None
 
-
     def print(self):
         solution = self.solution[1] if self.solution is not None else None
         print()
@@ -99,7 +100,6 @@ class Maze():
             print()
         print()
 
-
     def neighbors(self, state):
         row, col = state
         candidates = [
@@ -115,7 +115,6 @@ class Maze():
                 result.append((action, (r, c)))
         return result
 
-
     def solve(self):
         """Finds a solution to maze, if one exists."""
 
@@ -124,7 +123,7 @@ class Maze():
 
         # Initialize frontier to just the starting position
         start = Node(state=self.start, parent=None, action=None)
-        frontier = StackFrontier()
+        frontier = StackFrontier() #or QueueFrontier for Breadth First search
         frontier.add(start)
 
         # Initialize an empty explored set
@@ -162,7 +161,6 @@ class Maze():
                 if not frontier.contains_state(state) and state not in self.explored:
                     child = Node(state=state, parent=node, action=action)
                     frontier.add(child)
-
 
     def output_image(self, filename, show_solution=True, show_explored=False):
         from PIL import Image, ImageDraw
