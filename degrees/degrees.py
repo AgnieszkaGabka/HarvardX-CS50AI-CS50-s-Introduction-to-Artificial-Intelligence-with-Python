@@ -2,6 +2,7 @@
 import csv
 import sys
 
+from distlib.compat import raw_input
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -87,14 +88,25 @@ def main():
 
 
 def shortest_path(source, target):
-    """
-    Returns the shortest list of (movie_id, person_id) pairs
-    that connect the source to the target.
+    list = []
+    path = []
+    person1 = raw_input(source)
+    person2 = raw_input(target)
+    with open('small/people.csv') as p:
+        reader = csv.reader(p)
+        for row in reader:
+            if row[1] == person1:
+                list.append(row[0])
+    with open('small/stars.csv') as s:
+        reader = csv.reader(s)
+        for row in reader:
+            if row[0] == list[0]:
+                list.append(row[1])
+                path.append(list)
 
-    If no possible path, returns None.
-    """
 
-    # TODO
+
+
     raise NotImplementedError
 
 
