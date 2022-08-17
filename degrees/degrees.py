@@ -90,71 +90,70 @@ def main():
 def shortest_path(source, target):
     person1 = source
     person2 = target
-    list = []
     frontier = []
     with open('large/stars.csv') as s:
         reader = csv.reader(s)
         for row in reader: #szukamy wszystkich filmów, w których grał source
-            if row[0] == source:
+            if raw_input(row[0]) == source:
                 frontier.append(row)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2:
+        if raw_input(node[1]) == person2:
             print("Person found! ID:" + node[0])
         with open('large/stars.csv') as s:
             reader = csv.reader(s)
             for row in reader: #szukamy wszystkich osób, które grały w pierwszym filmie source
-                if row[1] == node[1]:
+                if raw_input(row[1]) == node[1]:
                     frontier.append(row)
                 else:
                     frontier.remove(node)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2:
+        if raw_input(node[1]) == person2:
             print("Person found! ID:" + node[0])
         with open('large/stars.csv') as s:
             reader = csv.reader(s)
             for row in reader:  # szukamy wszystkich osób, które grały w filmie osoby1 (2 stopień poszukiwań)
-                if row[0] == node[0]:
+                if raw_input(row[0]) == node[0]:
                     frontier.append(row)
                 else:
                     frontier.remove(node)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2:
+        if raw_input(node[1]) == person2:
             print("Person found! ID:" + node[0])
         with open('large/stars.csv') as s:
             reader = csv.reader(s)
             for row in reader: #3 stopień
-                if row[1] == node[1]:
+                if raw_input(row[1]) == node[1]:
                     frontier.append(row)
                 else:
                     frontier.remove(node)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2:
+        if raw_input(node[1]) == person2:
             print("Person found! ID:" + node[0])
         with open('large/stars.csv') as s:
             reader = csv.reader(s)
             for row in reader:  # 4 stopień
-                if row[0] == node[0]:
+                if raw_input(row[0]) == node[0]:
                     frontier.append(row)
                 else:
                     frontier.remove(node)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2:
+        if raw_input(node[1]) == person2:
             print("Person found! ID:" + node[0])
         with open('large/stars.csv') as s:
             reader = csv.reader(s)
-            for row in reader: # 5 stopień
-                if row[1] == node[1]:
+            for row in reader: #5 stopień
+                if raw_input(row[1]) == node[1]:
                     frontier.append(row)
                 else:
                     frontier.remove(node)
     if frontier:
         node = frontier[-1]
-        if node[1] == person2: #6 stopień
+        if raw_input(node[1]) == person2: #6 stopień
             print("Person found! ID:" + node[0])
         else:
             print("No such path!")
