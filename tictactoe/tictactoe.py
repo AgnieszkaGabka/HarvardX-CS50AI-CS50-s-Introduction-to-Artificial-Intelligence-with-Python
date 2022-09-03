@@ -2,7 +2,7 @@
 Tic Tac Toe Player
 """
 
-import math
+import math, random
 
 X = "X"
 O = "O"
@@ -18,10 +18,20 @@ def initial_state():
             [EMPTY, EMPTY, EMPTY]]
 
 
-def player(board):
-    """
-    Returns player who has the next turn on a board.
-    """
+def player(self, board):
+    empty_board = self.initial_state()
+    if board == empty_board:
+        return X
+    else:
+        lista = []
+        for lista in board:
+            for entry in lista:
+                if entry != EMPTY:
+                    lista.append(entry)
+        if len(lista) % 2 != 0:
+            return 0
+        else:
+            return X
     raise NotImplementedError
 
 
