@@ -94,7 +94,7 @@ def shortest_path(source, target):
     with open('large/stars.csv') as s:
         reader = csv.reader(s)
         for row in reader: #szukamy wszystkich filmów, w których grał source
-            if raw_input(row[0]) == source:
+            if raw_input(row[0]) == person1:
                 frontier.append(row)
     if frontier:
         node = frontier[-1]
