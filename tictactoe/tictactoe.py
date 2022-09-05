@@ -36,9 +36,12 @@ def player(self, board):
 
 
 def actions(board):
-    """
-    Returns set of all possible actions (i, j) available on the board.
-    """
+    allowed_actions = []
+    moves = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 1), (2, 1), (2, 2)]
+    for action in moves:
+        if board[action] == EMPTY:
+            allowed_actions.append(action)
+            return allowed_actions
     raise NotImplementedError
 
 
